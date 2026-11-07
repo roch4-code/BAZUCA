@@ -1,0 +1,16 @@
+PACOTE DE PUBLICAÇÃO — DEUS É O JUIZ
+Data: 07/11/2026
+
+Contém o site estático, imagens e ícones, cliente Supabase, scripts SQL e API privada Render.
+
+PUBLICAÇÃO
+- Site: publique a raiz desta pasta em hospedagem estática com HTTPS. A navegação usa rotas hash e abre na página inicial.
+- API: publique `render-api` como Web Service Node >=20 ou use `render.yaml`. Configure no painel Render DATABASE_URL, DATA_ENCRYPTION_KEY, SUPABASE_SECRET_KEY (ou SUPABASE_SERVICE_ROLE_KEY) e ALLOWED_ORIGINS. Não coloque esses valores nos arquivos do site.
+- Supabase: consulte os documentos de setup antes de aplicar migrations. Não rode scripts de instalação inicial sobre banco em uso sem revisar o efeito.
+- Neon: consulte `neon-sensitive-setup.sql`, `neon-refund-requests.sql` e os guias. Use o papel técnico dej_render_app, nunca o owner, na API.
+
+SEGURANÇA
+Este pacote não contém `.env`, `.git`, node_modules ou credenciais server-side. `backend-config.js` contém configurações públicas do navegador, incluindo chave publicável Supabase. Nunca substitua por `service_role` ou `sb_secret`.
+
+ESTADO
+Leia `SECURITY-REVIEW.md`: as checagens locais passaram, mas isso não comprova configuração remota, RLS efetivo, CORS, backup, MFA ou deploy. Pagamento, frete e rastreio não estão integrados.
